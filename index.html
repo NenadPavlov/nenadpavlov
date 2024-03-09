@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="jquery-3.7.1.min.js"></script>
         <script src="jquery-ui.min.js"></script>
-        <script src="script.js"></script>
         <link rel="stylesheet" href="jquery-ui.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
@@ -17,16 +16,8 @@
                 <button class="btn-calculate-correlation" disabled>Calculate Correlation for Selected Instruments</button>
             </div>
             
-            
             <div class="section2">
-                <div id="accordion">
-                    <!--h3>Section 1</h3>
-                    <div><p>Text for section 1</p></div>
-                    <h3>Section 2</h3>
-                    <div><p>Text for section 2</p></div>
-                    <h3>Section 3</h3>
-                    <div><p>Text for section 3</p></div-->
-                </div>
+                <div id="accordion"></div>
                 <ul class="available-instruments"></ul>
             </div>
 
@@ -40,25 +31,6 @@
                         <li><a href="#tabs-4">MN1</a></li>
                     </ul>
                     <div id="tabs-1">
-                        <!--table class="test correlationTable">
-                            <thead>
-                                <th></th>
-                                <th>EURUSD</th>
-                                <th>GBPUSD</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>EURUSD</th>
-                                    <td>1</td>
-                                    <td>0.86</td>
-                                </tr>
-                                <tr>
-                                    <th>GBPUSD</th>
-                                    <td>0.86</td>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table-->
                         <table class="correlationTable H1">
                             <thead>
                                 <tr><th></th></tr>
@@ -102,5 +74,6 @@
                 </div>
             </div>
         </div>
+    <script src="script.js"></script>
     </body>
 </html>

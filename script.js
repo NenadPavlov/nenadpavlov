@@ -1,49 +1,29 @@
-$(function() {
+window.onload = function() {
 
-    const correlationRequest = new Request('correlation_categories_2024.json');
+    const getCategories = new Request('correlation_categories_2024.json');
 
-    fetch(correlationRequest)
+    fetch(getCategories)
         .then((response) => response.json())
         .then((data) => {
-            
-            CorrelationData = data;
-            console.log(data);
-
             data.i.forEach((e) => {
-                //console.log(Object.values(e)[0]);
                 let category = Object.keys(e)[0];
                 let categoryInstruments = Object.values(e)[0];
                 let className = category.toLowerCase().replace(" ","");
                 $('#accordion').append(`<h3>${category}</h3><div><p class="${className}"></p></div>`);
                 categoryInstruments.forEach((i) => {
-                    let cleanedClass = i.n;//.replace('.',"");
-                    $(`#accordion .${className}`).append(`<li class="instrument"><label><input type="checkbox" class="${cleanedClass}">${i.fn}</label></li>`);
-                })
-
+                    $(`#accordion .${className}`).append(`<li class="instrument"><label><input type="checkbox" class="${i.n}">${i.fn}</label></li>`);
+                });
             });
-/*
-            for(const [key, value] of Object.entries(data.i)) {
-                console.log(`${key}: ${value}`);
-                //$('ul.available-instruments').append(`<li class="instrument"><input type="checkbox" class="${key}">${key}</li>`);
-            }
-//*/
-            
+            $( "#accordion" ).accordion({
+                collapsible: true
+            });
         });
-
-    
-})
-
-window.onload = function() {
-
-    $( "#accordion" ).accordion({
-        collapsible: true
-    });
 
     $("#tabs").tabs({
         active: 0
     });
 
-    let CorrelationData;
+    let correlationData;
     let TFs = ["H1", "D1", "W1", "MN1"];
     let maxCheckedInstruments = 20;
 
@@ -86,20 +66,9 @@ window.onload = function() {
     fetch(correlationRequest)
         .then((response) => response.json())
         .then((data) => {
-            CorrelationData = data;
+            correlationData = data;
         });
-    /*
-    $('body').on('mouseenter','table td.cell', function(){
-        var _this = $(this);
-        var idx = _this.index() - 1;
-        $('tr').each(function(){
-            $(this).find('td.cell:eq(' + idx + ')').addClass('hovered');
-        });
-    });
-    $('body').on('mouseleave','table td.cell', function(){
-        $('td.hovered').removeClass('hovered');
-    });
-    //*/
+
     let allInputs = "li.instrument input";
 
 // <--------------------------------------------------------------------------
@@ -111,17 +80,14 @@ window.onload = function() {
             $(table).find('tbody tr').remove();
         });
 
-        //*
-
         // vidi koji su checkirani instrumenti, sacuvaj i protrci kroz njih racunajuci korelaciju
         let checkedInstruments = [];
         $(`${allInputs}:checked`).each((index, instrument) =>{
-        //    console.log(instrument);
             checkedInstruments.push({class: $(instrument).attr('class'), name: $(instrument).parent().text()});
         });
         console.log(checkedInstruments);
 
-        // Pravljenje tabele
+        // Pravljenje tabele, zaglavlja i redova
         for(let i = 0; i < checkedInstruments.length; i++) {
             $(".correlationTable").each((index, table) => {
                 $(table).find('thead tr').append(`<th class="${checkedInstruments[i].class}">${checkedInstruments[i].name}</th>`);
@@ -130,6 +96,7 @@ window.onload = function() {
 
         }
 
+        // Pravljenje celija
         $(".correlationTable").each((index, table) => {         
             $(table).find('tbody tr').each((rowIndex, row) => {
                 for(let i = 0; i < checkedInstruments.length; i++) {
@@ -151,8 +118,8 @@ window.onload = function() {
                 let instrument2 = checkedInstruments[j].class;
                 
                 for(let t = 0; t < TFs.length; t++) {
-                    let firstSymbol = CorrelationData.c[instrument1].tf[TFs[t]];
-                    let secondSymbol = CorrelationData.c[instrument2].tf[TFs[t]];
+                    let firstSymbol = correlationData.c[instrument1].tf[TFs[t]];
+                    let secondSymbol = correlationData.c[instrument2].tf[TFs[t]];
                     let numberOfCandles = firstSymbol.length < secondSymbol.length ? firstSymbol.length : secondSymbol.length;
                     
                     let corrValue = CalculateCorrelation(firstSymbol, secondSymbol, numberOfCandles);
@@ -210,17 +177,12 @@ window.onload = function() {
 
             }
         }
-        //*/
     });
 
     $('#state input').on('click', function(e) {
 
         let visual = $(e.target).val();
 
-        console.log(visual);
-
-        //let visual = $('#state input:checked').val();
-        let className = "";
         let allClasses = `
         high_positive       highest_positive        high_negative       highest_negative
         high_positive_bgr   highest_positive_bgr    high_negative_bgr   highest_negative_bgr
