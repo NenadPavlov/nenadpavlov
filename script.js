@@ -37,7 +37,7 @@ window.onload = function() {
      * @param {number} symbol1Prices 
      * @param {number} symbol2Prices 
      * @param {number} periods 
-     * @returns 
+     * @returns {number}
      */
     function CalculateCorrelation(symbol1Prices, symbol2Prices, periods) {
                                                        
