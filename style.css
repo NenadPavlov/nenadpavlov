@@ -1,0 +1,158 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    'header header header header header header header'
+    'menu main main main main main main';
+    gap: 20px;
+}
+.section1 {
+    grid-area: header;
+}
+.section2 {
+    grid-area: menu;
+}
+.section3 {
+    grid-area: main;
+}
+.ui-accordion-content {
+    height: auto !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 12px;
+    /*background: #eaebec;*/
+}
+table td {
+    border: 2px solid #eaebec;
+    font-size: 12px;
+    padding: 15px;
+    text-align: center;
+}
+table tr {
+    border: none;
+    margin: 0;
+    vertical-align: baseline;
+}
+table thead {
+    display: table-header-group;
+}
+table thead th {
+    max-width: 65px;
+}
+table th {
+    padding: 5px;
+}
+table tbody th {
+    max-width: 80px;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 0.5em 1em;
+    max-width: 350px;
+    font-size: 14px !important;
+}
+
+.ui-accordion .ui-accordion-header {
+    max-width: 363px;
+    font-size: 14px !important;
+}
+
+
+
+
+/**/
+table td.highest_positive
+{
+    background-color: #006699;
+    color: white;
+}
+table td.highest_positive_font
+{
+    color: #006699;
+    background-color: transparent;
+}
+table td.highest_positive_bgr
+{
+    color: #006699;
+    background-color: #006699;
+}
+/**/
+table td.high_positive
+{
+    background-color: #76C5EC;
+    color: white;
+}
+table td.high_positive_font
+{
+    color: #76C5EC;
+    background-color: transparent;
+}
+table td.high_positive_bgr
+{
+    color: #76C5EC;
+    background-color: #76C5EC;
+}
+/**/
+table td.neutral
+{
+    background-color: #C7C4C7;
+    color: white;
+}
+table td.neutral_font
+{
+    color: #999;
+    background-color: transparent;
+
+}
+table td.neutral_bgr
+{
+    color: white;
+    /*
+    color: #C7C4C7;
+    background-color: #C7C4C7;
+    */
+}
+/**/
+table td.high_negative
+{
+    background-color: #FD634C;
+    color: white;
+}
+table td.high_negative_font
+{
+    color: #FD634C;
+    background-color: transparent;
+}
+table td.high_negative_bgr
+{
+    color: #FD634C;
+    background-color: #FD634C;
+}
+/**/
+table td.highest_negative
+{
+    background-color: #B31F23;
+    color: white;
+}
+table td.highest_negative_font
+{
+    color: #B31F23;
+    background-color: transparent;
+}
+table td.highest_negative_bgr
+{
+    color: #B31F23;
+    background-color: #B31F23;
+}
+
+
+
+
+
+/*
+table td.hovered, table tr:hover{
+    background: rgba(0,0,0,0.1);
+}
+*/
