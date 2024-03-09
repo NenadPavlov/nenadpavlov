@@ -1,10 +1,12 @@
 window.onload = function() {
 
+    // Test fajl sa kategorijama za accordion
     const getCategories = new Request('correlation_categories_2024.json');
 
     fetch(getCategories)
         .then((response) => response.json())
         .then((data) => {
+            // Pravljenje htmla za accordion
             data.i.forEach((e) => {
                 let category = Object.keys(e)[0];
                 let categoryInstruments = Object.values(e)[0];
@@ -14,11 +16,13 @@ window.onload = function() {
                     $(`#accordion .${className}`).append(`<li class="instrument"><label><input type="checkbox" class="${i.n}">${i.fn}</label></li>`);
                 });
             });
+            // Inicijalizacija accordiona
             $( "#accordion" ).accordion({
                 collapsible: true
             });
         });
 
+    // Inicijalizacija tabova
     $("#tabs").tabs({
         active: 0
     });
@@ -27,6 +31,14 @@ window.onload = function() {
     let TFs = ["H1", "D1", "W1", "MN1"];
     let maxCheckedInstruments = 20;
 
+    /**
+     * Formula za racunanje korelacije izmedju dva finansijska instrumenta
+     * 
+     * @param {number} symbol1Prices 
+     * @param {number} symbol2Prices 
+     * @param {number} periods 
+     * @returns 
+     */
     function CalculateCorrelation(symbol1Prices, symbol2Prices, periods) {
                                                        
         if(periods < 2) { return(-2); }                                     // Ako je n manji od 2 (premalo sveca) ne racunaj nista, vrati -2 (legacy kod, neko je to stavio)
@@ -61,6 +73,7 @@ window.onload = function() {
         return(-3);                                                      // legacy kod, neko je stavio da bude -3 ako je doslo do greske
     }
 
+    // Test fajl sa sirovim cenama finansijskih instrumenata
     const correlationRequest = new Request('correlationTest.json');
 
     fetch(correlationRequest)
@@ -71,21 +84,26 @@ window.onload = function() {
 
     let allInputs = "li.instrument input";
 
-// <--------------------------------------------------------------------------
-
+    /**
+     * Event handler za klik na dugme za racunanje korelacije i logika iza toga
+     */
     $('.btn-calculate-correlation').click(() => {
         
+        // Reset tabela unutar tabova
         $('.correlationTable').each((index, table) => {
             $(table).find('thead tr th:gt(0)').remove();
             $(table).find('tbody tr').remove();
         });
 
-        // vidi koji su checkirani instrumenti, sacuvaj i protrci kroz njih racunajuci korelaciju
+        /**
+         * Vidi koji su checkirani instrumenti, sacuvaj ih u nizu objekata
+         * Koristimo objekte jer nam trebaju sirova imena za povezivanje sa accordionom
+         * a trebaju nam i puna imena za ispis korisnicima u tabelama
+         */
         let checkedInstruments = [];
         $(`${allInputs}:checked`).each((index, instrument) =>{
             checkedInstruments.push({class: $(instrument).attr('class'), name: $(instrument).parent().text()});
         });
-        console.log(checkedInstruments);
 
         // Pravljenje tabele, zaglavlja i redova
         for(let i = 0; i < checkedInstruments.length; i++) {
@@ -109,7 +127,7 @@ window.onload = function() {
             });
         });
 
-
+        // Protrcavanje kroz selektovane finansijske instrumente
         for(let i = 0; i < checkedInstruments.length; i++) {
 
             for(let j = i + 1; j < checkedInstruments.length; j++) {
@@ -123,8 +141,8 @@ window.onload = function() {
                     let numberOfCandles = firstSymbol.length < secondSymbol.length ? firstSymbol.length : secondSymbol.length;
                     
                     let corrValue = CalculateCorrelation(firstSymbol, secondSymbol, numberOfCandles);
-                    console.log(`${instrument1} - ${instrument2} - TimeFrame: ${TFs[t]} correlation: ${corrValue}`);
 
+                    // Gledamo koji je radio button trenutno izabran za izgleda tabela i spram toga dodajemo CSS klase na celije
                     let visual = $('#state input:checked').val();
                     let className = "";
                     let allClasses = `high_positive highest_positive neutral high_negative highest_negative
@@ -169,16 +187,20 @@ window.onload = function() {
                             className = "neutral_bgr";
                         }
                     }
-
+                    
+                    // Ispis vrednosti korelacije i dodeljivanje odgovarajuce klase za izgled
                     $(`.${TFs[t]}`).find(`.${instrument1}_${instrument2}`).text(corrValue).removeClass(allClasses).addClass(className);
+                    // Ako se poredi finansijski instrument sam sa sobom postavljamo crtu kao vrednost, ispada po dijagonali tabela
                     $(`.${TFs[t]}`).find(`.${instrument1}_${instrument1}`).text("-");
                     $(`.${TFs[t]}`).find(`.${instrument2}_${instrument2}`).text("-");
                 }
-
             }
         }
     });
 
+    /**
+     * Event handler kada korisnik klikce po radio dugmicima za promenu izgleda tabela
+     */
     $('#state input').on('click', function(e) {
 
         let visual = $(e.target).val();
