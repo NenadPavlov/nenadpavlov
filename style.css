@@ -1,7 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .grid-container {
     display: grid;
     grid-template-areas: 
@@ -18,15 +17,10 @@ body {
 .section3 {
     grid-area: main;
 }
-.ui-accordion-content {
-    height: auto !important;
-}
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 12px;
-    /*background: #eaebec;*/
 }
 table td {
     border: 2px solid #eaebec;
@@ -51,8 +45,9 @@ table th {
 table tbody th {
     max-width: 80px;
 }
-
+/* Nasilno uklapanje layouta */
 .ui-accordion .ui-accordion-content {
+    height: auto !important;
     padding: 0.5em 1em;
     max-width: 350px;
     font-size: 14px !important;
@@ -62,11 +57,7 @@ table tbody th {
     max-width: 363px;
     font-size: 14px !important;
 }
-
-
-
-
-/**/
+/* Klase za vizuelne varijacije tabela*/
 table td.highest_positive
 {
     background-color: #006699;
@@ -111,12 +102,9 @@ table td.neutral_font
 
 }
 table td.neutral_bgr
-{
-    color: white;
-    /*
+{    
     color: #C7C4C7;
     background-color: #C7C4C7;
-    */
 }
 /**/
 table td.high_negative
@@ -150,13 +138,3 @@ table td.highest_negative_bgr
     color: #B31F23;
     background-color: #B31F23;
 }
-
-
-
-
-
-/*
-table td.hovered, table tr:hover{
-    background: rgba(0,0,0,0.1);
-}
-*/
