@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.7.1.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script>
+            $(function(){
+                $( "#accordion" ).accordion({
+                    collapsible: true,
+                    active: false,
+                    heightStyle: "content",
+                });
+                $( ".accordionLevel1" ).accordion({
+                    collapsible: true,
+                    active: false,
+                    heightStyle: "content"
+                }).on( "accordionactivate", function( event, ui ) {
+                    //$('.ui-accordion-content').css('height','200px');
+                } );
+            });
+        </script>
+        <link rel="stylesheet" href="jquery-ui.min.css">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            table {
+                table-layout : fixed;
+            }
+            .container {
+                width: 50%;
+            }
+            .ui-accordion-content { 
+                min-height: 150px;
+            }
+            .ui-accordion .ui-accordion-header {
+                font-size: 14px;
+            }
+
+            th {
+                font-weight: normal;
+            }
+
+            .ui-accordion-header-icon {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div dir="auto" class="css-146c3p1" style="color: rgb(113, 113, 113); font-size: 16.8px; font-weight: bold;">User: Alex Alex</div>
+                <div class="css-175oi2r" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div data-testid="referrers-list"><div style="display: flex; align-items: center;">
+                        <div style="display: flex; flex-grow: 1;"><span>Total earnings:<b>$534.7</b></span></div>
+                    </div>
+                    <br>
+                    <div class="table-responsive" >
+                        <h3>Level 1</h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Product</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">Expiration date</span><div style="display: inline; cursor: pointer;"><i class="icon"><div dir="auto" class="css-146c3p1 r-lrvibr" style="font-size: 12px; font-family: FontAwesome; font-weight: normal; font-style: normal;"></div></i></div></div></th><th>Earnings</th><th class="text-center">Payments</th></tr></thead><tbody></tbody></table>
+                    </div>
+                    </div>
+                </div>
+                
+                <div id="accordion" style="">
+                    <h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Nenad</th><th>nenad@nenad.com</th><th>Serbia</th><th>123455</th><th>Prop Ticket</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">4-4-2024</span></div></th><th>$384.00</th><th class="text-center">$1,040.00</th></tr></thead><tbody></tbody></table>
+                    </h3>
+                    <div>
+                        <div>No further network members</div>
+                    </div>
+                    <h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Dejan</th><th>dejan@dejan.com</th><th>Serbia</th><th>123455</th><th>Pro Monthly</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">4-5-2024</span></div></th><th>$133.00</th><th class="text-center">$540.00</th></tr></thead><tbody></tbody></table>
+                    </h3>
+                    <div>
+                        <h3>Level 2</h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Product</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">Expiration date</span><div style="display: inline; cursor: pointer;"><i class="icon"><div dir="auto" class="css-146c3p1 r-lrvibr" style="font-size: 12px; font-family: FontAwesome; font-weight: normal; font-style: normal;"></div></i></div></div></th><th>Earnings</th><th class="text-center">Payments</th></tr></thead><tbody></tbody></table>
+                        <div class="accordionLevel1">
+                            <h3>
+                                <table class="table table-hover" style="width: 100%;"><thead><tr><th>Milan</th><th>milan@milan.com</th><th>Serbia</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table> 
+                            </h3>
+                            <div>No further network members</div>
+                        </div>
+                    </div>
+                    <h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Pan</th><th>pan@pan.com</th><th>Cyprus</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                    </h3>
+                    <div>
+                        <h3>Level 2</h3>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Product</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">Expiration date</span><div style="display: inline; cursor: pointer;"><i class="icon"><div dir="auto" class="css-146c3p1 r-lrvibr" style="font-size: 12px; font-family: FontAwesome; font-weight: normal; font-style: normal;"></div></i></div></div></th><th>Earnings</th><th class="text-center">Payments</th></tr></thead><tbody></tbody></table>
+                        <div class="accordionLevel1">
+                            <h3>
+                                <table class="table table-hover" style="width: 100%;"><thead><tr><th>Sonja</th><th>sonja@sonja.com</th><th>Serbia</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                            </h3>
+                            <div>
+                                <h3>Level 3</h3>
+                                <table class="table table-hover" style="width: 100%;"><thead><tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Product</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">Expiration date</span><div style="display: inline; cursor: pointer;"><i class="icon"><div dir="auto" class="css-146c3p1 r-lrvibr" style="font-size: 12px; font-family: FontAwesome; font-weight: normal; font-style: normal;"></div></i></div></div></th><th>Earnings</th><th class="text-center">Payments</th></tr></thead><tbody></tbody></table>
+                                <div class="accordionLevel1">
+                                    <h3>
+                                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>George</th><th>george@geo.com</th><th>Cyprus</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                                    </h3>
+                                    <div>
+                                        <h3>Level 4</h3>
+                                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Product</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">Expiration date</span><div style="display: inline; cursor: pointer;"><i class="icon"><div dir="auto" class="css-146c3p1 r-lrvibr" style="font-size: 12px; font-family: FontAwesome; font-weight: normal; font-style: normal;"></div></i></div></div></th><th>Earnings</th><th class="text-center">Payments</th></tr></thead><tbody></tbody></table>
+                                        <div class="accordionLevel1">
+                                            <h3>
+                                                <table class="table table-hover" style="width: 100%;"><thead><tr><th>John</th><th>john@john.com</th><th>US</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                                            </h3>
+                                            <div>
+                                                No further network members
+                                            </div>
+                                            <h3>
+                                                <table class="table table-hover" style="width: 100%;"><thead><tr><th>Bill</th><th>bill@bill.com</th><th>US</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                                            </h3>
+                                            <div>No further network members</div>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Jovana</th><th>jovana@jo.com</th><th>Cyprus</th><th>123455</th><th>--</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">--</span></div></th><th>$722.00</th><th class="text-center">$1,540.00</th></tr></thead><tbody></tbody></table>
+                                    </h3>
+                                    <div>No further network members</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        
+    </body>
+</html>
