@@ -17,6 +17,9 @@
                 }).on( "accordionactivate", function( event, ui ) {
                     //$('.ui-accordion-content').css('height','200px');
                 } );
+                $('#dialog').dialog({
+                    autoOpen: false
+                });
             });
         </script>
         <link rel="stylesheet" href="jquery-ui.min.css">
@@ -44,9 +47,42 @@
             .ui-accordion-header-icon {
                 display: none;
             }
+
+            #dialog tr, #dialog td {
+                border: 1px solid;
+            }
         </style>
     </head>
     <body>
+        <div id="dialog" title="Basic dialog">
+            <p>Payments by Nenad Nenad</p>
+            <table>
+                <tr>
+                    <th>Amount</th>
+                    <th>Product</th>
+                    <th>Time</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>$1,000.00</td>
+                    <td>Pro</td>
+                    <td>4-4-2024</td>
+                    <td><button style="background-color: cornflowerblue; color: white;">Info</button></td>
+                </tr>
+                <tr>
+                    <td>$20.00</td>
+                    <td>Silver</td>
+                    <td>4-4-2024</td>
+                    <td><button style="background-color: cornflowerblue; color: white;">Info</button></td>
+                </tr>
+                <tr>
+                    <td>$20.00</td>
+                    <td>Silver</td>
+                    <td>4-4-2024</td>
+                    <td><button style="background-color: cornflowerblue; color: white;">Info</button></td>
+                </tr>
+            </table>
+        </div>
         <div class="container">
             <div dir="auto" class="css-146c3p1" style="color: rgb(113, 113, 113); font-size: 16.8px; font-weight: bold;">User: Alex Alex</div>
                 <div class="css-175oi2r" style="padding-top: 15px; padding-bottom: 15px;">
@@ -63,7 +99,8 @@
                 
                 <div id="accordion" style="">
                     <h3>
-                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Nenad</th><th>nenad@nenad.com</th><th>Serbia</th><th>123455</th><th>Prop Ticket</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">4-4-2024</span></div></th><th>$384.00</th><th class="text-center">$1,040.00</th></tr></thead><tbody></tbody></table>
+                        <table class="table table-hover" style="width: 100%;"><thead><tr><th>Nenad</th><th>nenad@nenad.com</th><th>Serbia</th><th>123455</th><th>Prop Ticket</th><th><div style="display: flex; align-items: center;"><span style="white-space: nowrap; margin-right: 5px;">4-4-2024</span></div></th><th>$384.00</th><th class="text-center">
+                            <a style="text-decoration: underline;" onclick="$('#dialog').dialog('open')">$1,040.00</a></th></tr></thead><tbody></tbody></table>
                     </h3>
                     <div>
                         <div>No further network members</div>
